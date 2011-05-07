@@ -31,7 +31,6 @@ my $dbpassword = "superpoop123";
 ######
 # Private message parsing
 ######
-
 sub private_msg {
 	my ($server,$msg,$nick,$address,$target) = @_;
     # return unless $server->{usermode_away} eq 1;
@@ -41,7 +40,6 @@ sub private_msg {
 ######
 # Sub to catch nick hilights
 ######
-
 sub nick_hilight {
     my ($dest, $text, $stripped) = @_;
     if ($dest->{level} & MSGLEVEL_HILIGHT) {
@@ -52,7 +50,6 @@ sub nick_hilight {
 ######
 # Send messages to mysql database
 ######
-
 sub mysqlsend {
     my $dbh = DBI->connect("DBI:mysql:database=$database;host=$dbhost",
         $dbusername, $dbpassword,
@@ -66,6 +63,5 @@ sub mysqlsend {
 ######
 # Irssi::signal_add_last / Irssi::command_bind
 ######
-
 Irssi::signal_add_last("message private", "private_msg");
 Irssi::signal_add_last("print text", "nick_hilight");
